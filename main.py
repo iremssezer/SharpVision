@@ -6,7 +6,7 @@ import sqlite3 as sql
 import re
 
 model = YOLO('best.pt')
-############------- DATABASE
+############------- DATABASE---------#############
 db = sql.connect("plates.sqlite")
 cursor = db.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS plates (id, plate)")
@@ -16,27 +16,13 @@ pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tessera
 id_counter = 1
 plate_counter = {}
 plate_counter_list, last_list, keys = [], [], []
-"""for r in result:
-    boxes = r.boxes  # Boxes object for bbox outputs
-    print("aaaboxesaaa", boxes)
-    boxes = r.boxes.xyxy  # xyxy değerlerini alın
 
-    for box in boxes:
-        x1, y1, x2, y2 = box.tolist()  # Koordinatları ayrıştırın
-        width = x2 - x1  # Genişlik hesaplaması
-        height = y2 - y1  # Yükseklik hesaplaması
-        print("whhhhhh", width, height)"""
 while cap.isOpened():
-    # Bir sonraki çerçeveyi oku
     ret, frame = cap.read()
 
     if not ret:
         break
-    """for r in result:
-        boxes = r.boxes  # Boxes object for bbox outputs
-        print("aaaboxesaaa", boxes)
-        boxes = r.boxes.xyxy  # xyxy değerlerini alın
-        #print("boxes", boxes)"""
+    
     results = model.predict(frame, show=True, stream=True)
     for r in results:
         boxes = r.boxes.xyxy
@@ -49,13 +35,7 @@ while cap.isOpened():
                     x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
                     cropped = frame[y1:y2, x1:x2]
 
-                # Kırpılan alanı istediğiniz şekilde kullanabilirsiniz
-                # Örneğin, görüntüyü işleyebilir veya kaydedebilirsiniz
-
-                # Kırpılan alanı görüntüle
-                #cv2.imshow('Cropped Image', cropped)
-                #cropped = cropped.crop((x1, y1, (x1 + width), (y1 + height)))
-                #pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
+                
                     gray = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
                     blur = cv2.GaussianBlur(gray, (3, 3), 0)
                     #thresh = cv2.threshold(blur, 128, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
@@ -96,25 +76,7 @@ while cap.isOpened():
         if cv2.waitKey(1) == ord('q'):
             break
 
-    # Kaynakları serbest bırak
+    
 cap.release()
 cv2.destroyAllWindows()
 db.close()
-
-    #crop_img = r.crop((boxes['xyxy'][0][0], boxes['xywh'][0][1], boxes['xywh'][0][2], boxes['xywh'][0][3]))
-"""crop_img = result.convert("RGB")
-crop_img = crop_img.crop((xmin, ymin, xmax, ymax))
-crop_img.save("croped_plate.jpg", "JPEG")"""
-"""pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
-crop_img_text = pytesseract.image_to_string(result, lang='eng')
-print(crop_img_text)"""
-
-# Gri tonlama, Gauss bulanıklığı, Otsu eşiği
-
-"""read_cimage = cv2.imread(crop_img)
-gray = cv2.cvtColor(read_cimage, cv2.COLOR_BGR2GRAY)
-blur = cv2.GaussianBlur(gray, (3, 3), 0)
-thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
-
-plate_print = pytesseract.image_to_string(thresh, lang='eng')
-print(plate_print)"""
