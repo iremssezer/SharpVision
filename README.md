@@ -21,6 +21,7 @@ Outputs per training example: 2
 Grayscale: Apply to 25% of images
 Blur: Up to 2.5px
 Noise: Up to 5% of pixels
+
 ![roboflow2](https://github.com/iremssezer/CharpVision/assets/74788732/3970e663-c5f1-40c6-aff9-ff5a97c01711)
 
 ## Custom Training
