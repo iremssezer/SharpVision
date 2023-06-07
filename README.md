@@ -1,4 +1,4 @@
-# CharpVision
+# SharpVision
 License Plate Recognition YOLOV8 and EasyOCR (with Videos)
 
 ## Ultralytics
