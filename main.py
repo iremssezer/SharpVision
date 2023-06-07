@@ -7,9 +7,9 @@ import re
 
 model = YOLO('best.pt')
 ############------- DATABASE---------#############
-db = sql.connect("plates.sqlite")
+db = sql.connect("number_plates.sqlite")
 cursor = db.cursor()
-cursor.execute("CREATE TABLE IF NOT EXISTS plates (id, plate)")
+cursor.execute("CREATE TABLE IF NOT EXISTS number_plates (id, number_plate)")
 #result = model.predict(source="deneme.mp4", show=True, stream=True)
 cap = cv2.VideoCapture("deneme.mp4")
 pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
@@ -44,7 +44,7 @@ while cap.isOpened():
                     cv2.imshow("xop", thresh)
 
                     crop_img_text = pytesseract.image_to_string(thresh, lang='eng')
-                    print("oldu", crop_img_text)
+                    print("text: ", crop_img_text)
                     if len(crop_img_text) > 5:
                         if not re.search(r'[!*\'+()%/?~|,«—:\[\]§.°¥a-z]', crop_img_text):
                             if crop_img_text[0] == ' ' or crop_img_text[0] == '-':
@@ -62,9 +62,7 @@ while cap.isOpened():
                                     keys.append(key)
                                     if len(last_list) > 1 and last_list[-1] != last_list[-2]:
                                         last_list = [last_list[-1]]
-                                    cursor.execute("insert into plates (id, plate) values (?,?)", (id_counter, last_list[-1]))
-                                    print("sözlük", last_list)
-                                    print("dict", plate_counter)
+                                    cursor.execute("insert into number_plates (id, number_plate) values (?,?)", (id_counter, last_list[-1]))
                                     id_counter = id_counter + 1
                                     db.commit()
                             for key in keys:
