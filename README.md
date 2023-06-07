@@ -38,3 +38,5 @@ When the YOLOv8 model is trained, you’ll have a set of trained weights ready f
 
 ![detection 3](https://github.com/iremssezer/CharpVision/assets/74788732/3402f420-9d35-43df-be34-bcfd2c4576c0)
 
+![veritabanı3](https://github.com/iremssezer/CharpVision/assets/74788732/29c4aa75-1a73-4ce7-b73f-fc47f902a68f)
+
