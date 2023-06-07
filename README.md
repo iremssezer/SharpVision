@@ -7,11 +7,11 @@ Ultralytics YOLOv8 is the latest version of the YOLO (You Only Look Once) object
 ## Dataset from the Roboflow: [https://universe.roboflow.com/iremsezer2trakyaedutr/plate_detection-mtyuz]
 This dataset contains images of car license plates captured in various locations and under different lighting conditions. The dataset comprises a total of 724 images, each of which includes one or more car license plates. The images were annotated with bounding boxes around the license plates, indicating their precise location in the image. The dataset I obtained from this link [https://storage.googleapis.com/openimages/web/visualizer/index.html?type=detection&amp%3Bset=train&amp%3Bc=%2Fm%2F01jfm_&set=train&c=%2Fm%2F0703r8] and It consists of images showing vehicle registration plates that I have tagged using Roboflow. 
 ### Train / Test Split
-Training Set %84
+Training Set: %84
 1.1k images
-Validation Set %11
+Validation Set: %11
 144 images
-Testing Set %4
+Testing Set: %4
 51 images
 ### Preprocessing
 Auto-Orient: Applied
