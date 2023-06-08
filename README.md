@@ -27,10 +27,10 @@ Noise: Up to 5% of pixels
 
 ![roboflow2](https://github.com/iremssezer/CharpVision/assets/74788732/3970e663-c5f1-40c6-aff9-ff5a97c01711)
 
-## Custom Training
+## Custom Training: [https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolov8-object-detection-on-custom-dataset.ipynb]
 YOLOv8 Object Detection
 Once the dataset version is generated,it has dataset you can load directly into our notebook for easy training. 
-https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolov8-object-detection-on-custom-dataset.ipynb
+
 
 ## Deploy model on Roboflow
 When the YOLOv8 model is trained, you’ll have a set of trained weights ready for use. These weights will be `best.pt` folder. You can upload your model weights to Roboflow Deploy to use your trained weights on our infinitely scalable infrastructure.
